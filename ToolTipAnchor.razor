@@ -1,0 +1,28 @@
+﻿@using ToolTips
+@using ToolTips.Models
+@inherits ToolTipElementComponentBase
+
+<div @ref=refThis class="@CssClass" data-tooltip="@Visibility">
+	@ChildContent
+	<div class="@HelperCssClass">
+		@if(HelperContent==null)
+		{
+			@HelperText
+		}
+		else
+		{
+			@HelperContent
+		}
+	</div>
+</div>
+
+@code {
+	private string CssClass => "ToolTip-Anchor" + (HighlightInlineContentWhenActive ? "":" NoHighlight") + (string.IsNullOrEmpty(CustomCssClass) ? "" : $" {CustomCssClass}");
+
+	protected override void OnInitialized()
+	{
+		AlwaysVisible = (HelperAlwaysDisplayable == null) ? false : (bool)HelperAlwaysDisplayable;
+        HelperCssClass = "ToolTip-Helper" + (AlwaysVisible ? " Permanent":"") + (string.IsNullOrEmpty(CustomHelperCssClass) ? "" : $" {CustomHelperCssClass}");
+		base.OnInitialized();
+    }
+}

@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+	  <ProjectPriIndexName>ToolTips</ProjectPriIndexName>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Nullable>enable</Nullable>
+	  <RootNamespace>ToolTips</RootNamespace>
+	  <Company>LBN</Company>
+	  <Authors>LiGass</Authors>
+	  <Description>Simple ToolTip Components for Blazor Applications</Description>
+	  <RepositoryUrl>https://github.com/LiGass/Blazor.ToolTips</RepositoryUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageTags>c#;csharp;blazor;components;tooltips;helpers;blazor components</PackageTags>
+	  <PackageReleaseNotes>Test Version</PackageReleaseNotes>
+	  <AssemblyVersion>0.0.1</AssemblyVersion>
+	  <FileVersion>0.0.1</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Sample.ToolTipsSERVER\**" />
+    <Content Remove="Sample.ToolTipsSERVER\**" />
+    <EmbeddedResource Remove="Sample.ToolTipsSERVER\**" />
+    <None Remove="Sample.ToolTipsSERVER\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\ToolTipsJS.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ToolTipsJsInterop.js">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+</Project>
